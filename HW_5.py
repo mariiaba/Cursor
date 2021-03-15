@@ -131,12 +131,12 @@ class Concert:
             self._visitors_count = self.max_visitor_num
 
 
-Concert.max_visitor_num = 560
+Concert.max_visitor_num = 400
 concert = Concert()
-concert.visitors_count = 435
+concert.visitors_count = 500
 print(concert.visitors_count)
 
-# Output: 435
+# Output: 400
 
 # 6.
 # class AddressBookDataClass:
@@ -229,7 +229,7 @@ class Person:
 
 
 person = Person()
-person.age = 71
+setattr(person, 'age', 71)
 print(person.age)
 
 
