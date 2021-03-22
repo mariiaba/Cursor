@@ -84,8 +84,8 @@
 import dataclasses
 from abc import ABC, abstractmethod
 
-VEGETABLES = ["Red_tomato", "Cherry", "Malynivka"]
-FRUITS = ["Golden", "Bilyj_nalyv", "King"]
+VEGETABLES = ["Red_tomato"]
+FRUITS = ["Golden"]
 
 states = {'nothing': 0, 'flowering': 1, 'green': 2, 'red': 3, 'rotten': 4}
 
@@ -106,10 +106,12 @@ class Garden(metaclass=GardenMetaClass):
         self.fruits = fruits
         self.pests = pests
         self.gardener = gardener
+        self.vegetables_names = [tomato.vegetable_type for tomato in self.vegetables]
+        self.fruits_names = [apple.fruits_type for apple in self.fruits]
 
     def show_the_garden(self):
-        print(f'The garden has such vegetables: {self.vegetables}')
-        print(f'Also garden has such fruits: {self.fruits}')
+        print(f'The garden has such vegetables: {self.vegetables_names}')
+        print(f'Also garden has such fruits: {self.fruits_names}')
         print(f'And such pests: {self.pests}')
         print(f'The maintainer of the garden is {self.gardener}')
 
@@ -231,8 +233,8 @@ class Tomato(Vegetables):
             self.state += 1
         self.print_state()
 
-    def __str__(self):
-        return f'{self.vegetable_type} {self.index} is {self.state}'
+    def __print_state__(self):
+        print (f'{self.vegetable_type} {self.index} is {self.state}')
 
 class TomatoBush:
     def __init__(self, num):
@@ -331,14 +333,18 @@ class StarGardener(Gardener):
             if pests.quantity >= 1:
                 print ('Fighting pests')
                 pests.quantity //=2
-            
+
 
     def check_states(self):
         for all_plants in self.plants:
-            for plant in all_plants:
+            for plant in all_plants():
                 if plant.state == 3:
                     return True
-                return False
+                else:
+                    return False
+
+    def __str__(self):
+        return f'{self.name}'
 
 class PestsWork (Pests):
     def __init__(self, pests_type, quantity):
@@ -377,11 +383,12 @@ if __name__ == '__main__':
     # creating only one garden instance with vegetables and fruits
     garden = Garden(vegetables=tomato_bush.tomatoes, fruits=apple_tree.apples, pests=pests, gardener=tom)
     garden.show_the_garden()
-    state = tom.check_states()
-    if not state:
-        tom.handling()
+    # state = tom.check_states()
+    tom.check_states()
     for i in range(3):
         tom.handling()
     tom.harvest()
+
+
 
 
