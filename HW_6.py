@@ -278,7 +278,7 @@ class Apple(Fruit):
             self.state += 1
         self.print_state()
 
-    def __str__(self):
+    def __print_state__(self):
         return f'{self.fruits_type} {self.index} is {self.state}'
 
 
