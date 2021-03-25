@@ -233,7 +233,7 @@ class Tomato(Vegetables):
             self.state += 1
         self.print_state()
 
-    def __print_state__(self):
+    def print_state(self):
         print (f'{self.vegetable_type} {self.index} is {self.state}')
 
 class TomatoBush:
@@ -278,7 +278,7 @@ class Apple(Fruit):
             self.state += 1
         self.print_state()
 
-    def __print_state__(self):
+    def print_state(self):
         return f'{self.fruits_type} {self.index} is {self.state}'
 
 
@@ -378,7 +378,7 @@ if __name__ == '__main__':
     pests = PestsWork('worm', 10)
     tom = StarGardener('Tom', [tomato_bush, apple_tree])
     tom.poison_pests()
-    pests.eat()
+    #pests.eat()
 
     # creating only one garden instance with vegetables and fruits
     garden = Garden(vegetables=tomato_bush.tomatoes, fruits=apple_tree.apples, pests=pests, gardener=tom)
