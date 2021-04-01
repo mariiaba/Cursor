@@ -89,7 +89,7 @@ sys.path.append('/usr/lib/python3/dist-packages')
 import openpyxl as openpyxl
 
 
-class Excel():
+class Excel(object):
     def __init__(self, file_name):
         self.file_obj = openpyxl.load_workbook(file_name)
 
